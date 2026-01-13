@@ -1,328 +1,244 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Afaf Oussi</title>
+    <title>Afaf Oussi | Portfolio & CV Marketing Digital</title>
+    <!-- Chargement de Tailwind CSS pour le design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chargement de Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px 20px;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 50px 40px;
-            text-align: center;
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .name {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+        .skill-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-            font-size: 14px;
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .hero-bg {
+            background: radial-gradient(circle at top right, #eff6ff 0%, #ffffff 100%);
         }
 
-        .contact-item a {
-            color: white;
-            text-decoration: none;
+        .profile-img-container {
+            position: relative;
+            z-index: 1;
         }
 
-        .contact-item a:hover {
-            text-decoration: underline;
+        /* Décoration derrière la photo */
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 2rem;
+            z-index: -1;
+            transform: rotate(-3deg);
+            opacity: 0.8;
         }
 
-        .content {
-            padding: 40px 50px;
-        }
-
-        .section {
-            margin-bottom: 35px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .profile-text {
-            font-size: 15px;
-            color: #555;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .education-item,
-        .experience-item,
-        .project-item {
-            margin-bottom: 15px;
-            padding-left: 20px;
-            border-left: 3px solid #e0e0e0;
-            padding-bottom: 10px;
-        }
-
-        .item-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .item-subtitle {
-            font-size: 15px;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 8px;
-        }
-
-        .item-date {
-            font-size: 14px;
-            color: #764ba2;
-            font-weight: 600;
-        }
-
-        .item-description {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .item-description ul {
-            margin-top: 8px;
-            margin-left: 20px;
-        }
-
-        .item-description li {
-            margin-bottom: 5px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .skill-category-title {
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .skill-category-content {
-            font-size: 14px;
-            color: #555;
-        }
-
-        .languages {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            font-size: 15px;
-            color: #555;
-        }
-
-        .language-item strong {
-            color: #667eea;
-        }
-
-        .interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .interest-tag {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        @media (max-width: 768px) {
-            .content {
-                padding: 30px 25px;
-            }
-
-            .name {
-                font-size: 36px;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+        .img-glow {
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.15);
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1 class="name">AFAF OUSSI</h1>
-            <div class="contact-info">
-                <div class="contact-item">
-                    ✉️ <a href="mailto:oussiafaf@gmail.com">oussiafaf@gmail.com</a>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Barre de Navigation -->
+    <nav class="fixed w-full z-50 glass shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <span class="text-2xl font-bold gradient-text tracking-tight">Afaf Oussi</span>
+            
+            <!-- Menu Bureau -->
+            <div class="hidden md:flex space-x-10 font-semibold text-sm uppercase tracking-widest text-slate-600">
+                <a href="#accueil" class="hover:text-blue-600 transition">Accueil</a>
+                <a href="#competences" class="hover:text-blue-600 transition">Compétences</a>
+                <a href="#experience" class="hover:text-blue-600 transition">Expérience</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+            </div>
+            
+            <!-- Lien Téléchargement CV PDF -->
+            <a href="cv latex overleaf.pdf" download="cv latex overleaf.pdf" class="hidden md:flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-blue-700 transition shadow-xl shadow-blue-200 transform hover:scale-105 active:scale-95">
+                <i class="fas fa-file-pdf"></i> Mon CV PDF
+            </a>
+
+            <!-- Bouton Mobile -->
+            <button class="md:hidden text-2xl p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Section Accueil -->
+    <section id="accueil" class="pt-48 pb-32 px-6 hero-bg">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-20">
+            <div class="flex-1 text-center md:text-left">
+                <h2 class="text-blue-600 font-bold mb-4 uppercase tracking-[0.3em] text-sm">Spécialiste Marketing Digital</h2>
+                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-none text-slate-900 tracking-tighter">
+                    Afaf <span class="gradient-text">Oussi</span>
+                </h1>
+                <p class="text-xl text-slate-500 mb-12 max-w-xl leading-relaxed font-light">
+                    Passionnée par les nouvelles technologies et la communication, j'accompagne les marques dans leur transformation digitale avec dynamisme et créativité.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-6">
+                    <a href="https://www.linkedin.com/in/afaf-oussi/" target="_blank" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold hover:bg-slate-800 transition flex items-center gap-3 shadow-2xl">
+                        <i class="fab fa-linkedin text-xl"></i> Me Contacter
+                    </a>
+                    <a href="#competences" class="bg-white text-slate-900 border border-slate-200 px-10 py-5 rounded-2xl font-bold hover:bg-slate-50 transition flex items-center gap-3 shadow-sm">
+                        Découvrir mon travail
+                    </a>
                 </div>
-                <div class="contact-item">
-                    📱 +212 629136679
+            </div>
+            
+            <!-- Photo de Profil -->
+            <div class="profile-img-container w-80 h-80 md:w-[450px] md:h-[450px]">
+                <img src="afaf..jpeg" alt="Afaf Oussi - Profil" class="w-full h-full object-cover rounded-3xl shadow-2xl border-[12px] border-white img-glow" onerror="this.src='https://ui-avatars.com/api/?name=Afaf+Oussi&size=512&background=2563eb&color=fff'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section id="competences" class="py-32 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                <div class="max-w-xl">
+                    <h3 class="text-4xl font-black mb-6 text-slate-900 tracking-tight uppercase">Expertise Technique</h3>
+                    <p class="text-slate-500 text-lg">Un mix de compétences analytiques et créatives pour répondre aux enjeux du web moderne.</p>
                 </div>
-                <div class="contact-item">
-                    💻 <a href="https://github.com/afaf-oussi" target="_blank">github.com/afaf-oussi</a>
+                <div class="h-1 w-32 bg-blue-600 rounded-full hidden md:block mb-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Marketing -->
+                <div class="skill-card p-12 bg-blue-50/30 rounded-[3rem] border border-blue-100">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-10 text-3xl shadow-lg">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6">Marketing Digital</h4>
+                    <ul class="text-slate-600 space-y-4 text-lg">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Stratégie Social Media</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Emailing & Automation</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> CRM & Lead Gen</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Analyse de Marché</li>
+                    </ul>
                 </div>
-                <div class="contact-item">
-                    📊 <a href="https://kaggle.com/oussiafaf" target="_blank">kaggle.com/oussiafaf</a>
+
+                <!-- Outils -->
+                <div class="skill-card p-12 bg-purple-50/30 rounded-[3rem] border border-purple-100">
+                    <div class="w-16 h-16 bg-purple-600 text-white rounded-2xl flex items-center justify-center mb-10 text-3xl shadow-lg">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6">Outils & Design</h4>
+                    <ul class="text-slate-600 space-y-4 text-lg">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500"></i> Canva Pro & Design</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500"></i> Google Analytics 4</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500"></i> Maîtrise Office 365</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-purple-500"></i> Python & Data</li>
+                    </ul>
+                </div>
+
+                <!-- Langues -->
+                <div class="skill-card p-12 bg-emerald-50/30 rounded-[3rem] border border-emerald-100">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center mb-10 text-3xl shadow-lg">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6">Communication</h4>
+                    <ul class="text-slate-600 space-y-4 text-lg">
+                        <li class="flex items-center justify-between font-semibold">Français <span>Natif</span></li>
+                        <li class="flex items-center justify-between font-semibold">Arabe <span>Natif</span></li>
+                        <li class="flex items-center justify-between font-semibold">Anglais <span>Avancé</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="content">
-            <div class="section">
-                <h2 class="section-title">👤 Profil</h2>
-                <p class="profile-text">
-                    Actuellement en étude de Marketing digital, je suis dynamique et enthousiaste, j'apprécie le travail en équipe et les échanges avec différents interlocuteurs. Volontaire, je me distingue par mon excellente capacité d'écoute, de communication et mon envie constante d'apprendre.
-                </p>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">🎓 Formation</h2>
-                <div class="education-item">
-                    <div class="item-date">2023-2024</div>
-                    <div class="item-title">Baccalauréat Sciences de la gestion comptable</div>
-                </div>
-                <div class="education-item">
-                    <div class="item-date">2024-2025</div>
-                    <div class="item-title">1ère année en marketing digital et commercial</div>
-                </div>
-                <div class="education-item">
-                    <div class="item-date">2025-2026</div>
-                    <div class="item-title">2ème année en marketing digital et commercial</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">💼 Expérience Professionnelle / Stages</h2>
-                <div class="experience-item">
-                    <div class="item-title">Stage en marketing</div>
-                    <div class="item-subtitle">La Com Agence</div>
-                    <div class="item-date">2025</div>
-                    <div class="item-description">
-                        <ul>
-                            <li>Classement des factures et les dossiers</li>
-                            <li>L'impression</li>
+    <!-- Section Expérience -->
+    <section id="experience" class="py-32 px-6 bg-slate-900 text-white rounded-[4rem] mx-4 md:mx-10 my-10">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-4xl font-black mb-20 text-center tracking-tight uppercase">Parcours Professionnel</h3>
+            
+            <div class="space-y-16">
+                <div class="flex flex-col md:flex-row gap-10">
+                    <div class="md:w-1/4">
+                        <span class="text-blue-400 font-black text-2xl">2025</span>
+                        <p class="text-slate-400 mt-2 font-bold uppercase tracking-widest text-sm text-blue-400">Stage Marketing</p>
+                    </div>
+                    <div class="md:w-3/4 bg-slate-800/50 p-10 rounded-[2rem] border border-slate-700">
+                        <h4 class="text-2xl font-bold mb-2">La Com Agence</h4>
+                        <p class="text-blue-400 mb-6 font-medium italic">Assistante Marketing Digital</p>
+                        <ul class="text-slate-300 space-y-4 list-none">
+                            <li class="flex items-start gap-3">
+                                <span class="text-blue-500 mt-1">●</span>
+                                Gestion rigoureuse des dossiers clients et facturation.
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-blue-500 mt-1">●</span>
+                                Coordination de la production des supports print et digitaux.
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-blue-500 mt-1">●</span>
+                                Participation aux brainstormings créatifs pour les campagnes locales.
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="section">
-                <h2 class="section-title">🛠️ Compétences</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <div class="skill-category-title">Marketing digital</div>
-                        <div class="skill-category-content">
-                            Réseaux sociaux, Email marketing, CRM
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <div class="skill-category-title">Outils</div>
-                        <div class="skill-category-content">
-                            Excel, PowerPoint, Canva, Google Analytics
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <div class="skill-category-title">Analyse</div>
-                        <div class="skill-category-content">
-                            Segmentation client, étude de marché
-                        </div>
-                    </div>
-                </div>
+    <!-- Section Contact -->
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-6xl mx-auto bg-blue-600 rounded-[4rem] p-16 md:p-24 text-center text-white shadow-3xl">
+            <h3 class="text-5xl font-black mb-8 tracking-tighter">Prêt à collaborer ?</h3>
+            <p class="text-blue-100 text-xl mb-16 max-w-2xl mx-auto leading-relaxed">
+                Je suis actuellement à l'écoute de nouvelles opportunités en stage ou alternance. Discutons de vos besoins !
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <a href="mailto:oussiafaf@gmail.com" class="bg-white/10 backdrop-blur-md p-8 rounded-3xl hover:bg-white/20 transition group">
+                    <i class="fas fa-paper-plane text-3xl mb-4 group-hover:rotate-12 transition"></i>
+                    <p class="font-bold text-2xl">oussiafaf@gmail.com</p>
+                </a>
+                <a href="tel:+212629136679" class="bg-white/10 backdrop-blur-md p-8 rounded-3xl hover:bg-white/20 transition group">
+                    <i class="fas fa-phone-alt text-3xl mb-4 group-hover:shake transition"></i>
+                    <p class="font-bold text-2xl">+212 629 13 66 79</p>
+                </a>
             </div>
 
-            <div class="section">
-                <h2 class="section-title">📁 Projets / Portfolio</h2>
-                <div class="project-item">
-                    <div class="item-title">Création d'un mini-site web</div>
-                    <div class="item-description">
-                        Projet marketing universitaire
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">🌍 Langues</h2>
-                <div class="languages">
-                    <div class="language-item"><strong>Français</strong> (Natif)</div>
-                    <div class="language-item"><strong>Anglais</strong></div>
-                    <div class="language-item"><strong>Arabe</strong> (Natif)</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">🎨 Centres d'intérêt</h2>
-                <div class="interests">
-                    <span class="interest-tag">Marketing digital</span>
-                    <span class="interest-tag">Voyage</span>
-                    <span class="interest-tag">Lecture</span>
-                    <span class="interest-tag">Dessin</span>
-                </div>
+            <div class="flex justify-center gap-10 text-4xl">
+                <a href="https://github.com/afaf-oussi" target="_blank" class="hover:text-slate-900 transition"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/afaf-oussi/" target="_blank" class="hover:text-slate-900 transition"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.kaggle.com/oussiafaf" target="_blank" class="hover:text-slate-900 transition"><i class="fab fa-kaggle"></i></a>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="py-12 text-center text-slate-400 font-medium border-t border-slate-100">
+        <p>&copy; 2025 Afaf Oussi • Stratégie & Création Digital • Fait avec <span class="text-red-500 mx-1">❤</span></p>
+    </footer>
+
 </body>
 </html>
-    
-                 
-                  
-       
