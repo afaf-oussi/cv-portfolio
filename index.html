@@ -1,250 +1,178 @@
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Web | Afaf Oussi</title>
+    <title>Portfolio | Afaf Oussi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-bar {
-            height: 8px;
-            border-radius: 4px;
-            background: #e5e7eb;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            width: 0;
-            transition: width 1.5s ease-in-out;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #3b82f6;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .gradient-text { background: linear-gradient(90deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .skill-bar { height: 8px; border-radius: 4px; background: #e2e8f0; overflow: hidden; }
+        .skill-progress { height: 100%; background: linear-gradient(90deg, #2563eb, #7c3aed); transition: width 1.5s ease-in-out; }
+        section { padding: 60px 0; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <!-- Barre de Navigation -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <span class="text-xl font-bold gradient-text">Afaf Oussi</span>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#accueil" class="nav-link font-medium transition">Accueil</a>
-                    <a href="#experience" class="nav-link font-medium transition">Expérience</a>
-                    <a href="#competences" class="nav-link font-medium transition">Compétences</a>
-                    <a href="#projets" class="nav-link font-medium transition">Projets</a>
-                    <a href="#contact" class="nav-link font-medium transition">Contact</a>
-                    <a href="CV-Portfolio AfafOussi.pdf" download class="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition flex items-center gap-2 shadow-md">
-                        <i class="fas fa-download"></i> Mon CV PDF
-                    </a>
-                </div>
-                <button class="md:hidden text-slate-600" id="mobile-menu-btn">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+        <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center">
+            <span class="text-xl font-bold gradient-text italic">Afaf Oussi</span>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#accueil" class="hover:text-blue-600 transition">Accueil</a>
+                <a href="#competences" class="hover:text-blue-600 transition">Compétences</a>
+                <a href="#projets" class="hover:text-blue-600 transition">Projets</a>
+                <!-- Bouton Téléchargement avec icône -->
+                <a href="CV-Portfolio AfafOussi.pdf" download class="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                    <i class="fas fa-cloud-download-alt"></i> Télécharger CV
+                </a>
             </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 p-4 space-y-4">
-            <a href="#accueil" class="block font-medium">Accueil</a>
-            <a href="#experience" class="block font-medium">Expérience</a>
-            <a href="#competences" class="block font-medium">Compétences</a>
-            <a href="#projets" class="block font-medium">Projets</a>
-            <a href="#contact" class="block font-medium">Contact</a>
-            <a href="CV-Portfolio AfafOussi.pdf" download class="block w-full text-center px-4 py-2 bg-blue-600 text-white rounded-lg">Télécharger CV</a>
         </div>
     </nav>
 
-    <!-- Section Accueil (Hero) -->
+    <!-- Hero Section -->
     <section id="accueil" class="min-h-screen flex items-center pt-20">
         <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
             <div class="order-2 md:order-1">
-                <h2 class="text-blue-600 font-semibold tracking-wide uppercase mb-2">Étudiante en Marketing Digital & Commercial</h2>
-                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
-                    Connecter les marques aux <span class="gradient-text">Générations</span>
+                <h2 class="text-blue-600 font-bold tracking-widest text-sm uppercase mb-4">Étudiante Marketing Digital</h2>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 text-slate-900">
+                    L'Art du <span class="gradient-text">Marketing</span> au service de la Data.
                 </h1>
                 <p class="text-lg text-slate-600 mb-8 leading-relaxed">
-                    Dynamique et enthousiaste, je me spécialise dans le marketing digital pour transformer les idées en projets concrets. Volontaire avec une forte envie d'apprendre.
+                    Étudiante en 2ème année Marketing Digital & Commercial. Spécialisée dans l'analyse de données client et la stratégie digitale pour maximiser l'impact des marques.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="CV-Portfolio AfafOussi.pdf" download class="px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition shadow-lg shadow-blue-200 flex items-center gap-2">
-                        <i class="fas fa-file-pdf text-xl"></i> Mon CV-Portfolio
+                    <a href="https://www.kaggle.com/oussiafaf" target="_blank" class="px-8 py-3 bg-slate-900 text-white rounded-xl flex items-center gap-2 hover:bg-slate-800 transition">
+                        <i class="fab fa-kaggle text-blue-400"></i> Kaggle
                     </a>
-                    <a href="https://www.kaggle.com/oussiafaf" target="_blank" class="px-8 py-3 border border-slate-300 rounded-full font-medium hover:bg-slate-100 transition flex items-center gap-2">
-                        <i class="fab fa-kaggle"></i> Profil Kaggle
+                    <a href="https://github.com/afaf-oussi" target="_blank" class="px-8 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl flex items-center gap-2 hover:bg-slate-50 transition">
+                        <i class="fab fa-github"></i> GitHub
                     </a>
-                </div>
-                <div class="mt-10 flex gap-6 text-2xl text-slate-400">
-                    <a href="https://linkedin.com/in/afaf-oussi" target="_blank" class="hover:text-blue-600 transition"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/afaf-oussi" target="_blank" class="hover:text-slate-900 transition"><i class="fab fa-github"></i></a>
-                    <a href="https://www.kaggle.com/oussiafaf" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-kaggle"></i></a>
                 </div>
             </div>
-            <div class="relative flex justify-center order-1 md:order-2">
-                <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-3xl rotate-6 absolute -z-10 opacity-20 animate-pulse"></div>
-                <div class="w-64 h-64 md:w-80 md:h-80 bg-white p-2 rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
-                    <!-- Photo mise à jour ici -->
-                    <img src="WhatsApp Image 2026-01-12 at 19.17.40.jpeg" alt="Afaf Oussi" class="w-full h-full object-cover rounded-2xl">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Expérience & Éducation -->
-    <section id="experience" class="bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">Expérience & Formation</h2>
-            <div class="space-y-12">
-                <div class="flex gap-6">
-                    <div class="hidden sm:block w-32 pt-2 text-right shrink-0">
-                        <span class="text-blue-600 font-bold">2024 - 2026</span>
-                    </div>
-                    <div class="relative pl-8 border-l-2 border-slate-100 pb-2">
-                        <div class="absolute -left-[9px] top-2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-sm"></div>
-                        <h3 class="text-xl font-bold">Marketing Digital & Commercial</h3>
-                        <p class="text-slate-500 mb-2 font-medium">Formation Supérieure (Bac+2)</p>
-                        <p class="text-slate-600 leading-relaxed">Spécialisation en stratégies de réseaux sociaux, Email marketing et gestion CRM.</p>
-                    </div>
-                </div>
-                <div class="flex gap-6">
-                    <div class="hidden sm:block w-32 pt-2 text-right shrink-0">
-                        <span class="text-slate-400 font-bold">2025</span>
-                    </div>
-                    <div class="relative pl-8 border-l-2 border-slate-100 pb-2">
-                        <div class="absolute -left-[9px] top-2 w-4 h-4 bg-slate-300 rounded-full border-4 border-white shadow-sm"></div>
-                        <h3 class="text-xl font-bold">Stage en Marketing</h3>
-                        <p class="text-slate-500 mb-2 font-medium">La Com Agence</p>
-                        <ul class="text-slate-600 space-y-1 list-disc list-inside">
-                            <li>Gestion des dossiers clients et facturation.</li>
-                            <li>Suivi des supports de communication imprimés.</li>
-                        </ul>
-                    </div>
+            
+            <!-- Photo de Profil -->
+            <div class="order-1 md:order-2 flex justify-center relative">
+                <div class="absolute inset-0 bg-blue-100 rounded-full blur-3xl opacity-30 -z-10 animate-pulse"></div>
+                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-8 border-white shadow-2xl overflow-hidden">
+                    <img src="PHOTO AFAF CV .jpg" alt="Afaf Oussi" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Compétences -->
-    <section id="competences" class="bg-slate-50">
+    <section id="competences" class="bg-slate-100/50">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center">Compétences & Outils</h2>
-            <div class="grid md:grid-cols-2 gap-x-16 gap-y-10">
-                <div class="space-y-6">
-                    <div>
-                        <div class="flex justify-between mb-2"><span class="font-semibold">Marketing Digital</span><span class="text-slate-500">85%</span></div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Expertise & Outils</h2>
+                <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Data & Analyse -->
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 text-xl shadow-inner">
+                        <i class="fas fa-chart-pie"></i>
                     </div>
-                    <div>
-                        <div class="flex justify-between mb-2"><span class="font-semibold">Canva & Design</span><span class="text-slate-500">90%</span></div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
+                    <h3 class="font-bold text-xl mb-4">Data Analyse</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1"><span>Excel / Sheets</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1"><span>Google Analytics</span><span>70%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                        </div>
                     </div>
                 </div>
-                <div class="space-y-6">
-                    <div>
-                        <div class="flex justify-between mb-2"><span class="font-semibold">Communication</span><span class="text-slate-500">95%</span></div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="95%"></div></div>
+
+                <!-- Marketing Digital -->
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 text-xl shadow-inner">
+                        <i class="fas fa-bullhorn"></i>
                     </div>
-                    <div>
-                        <div class="flex justify-between mb-2"><span class="font-semibold">Analyse de Données</span><span class="text-slate-500">75%</span></div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+                    <h3 class="font-bold text-xl mb-4">Marketing</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1"><span>Social Media / Ads</span><span>90%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%; background: #a855f7"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1"><span>SEO / SEM</span><span>75%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 75%; background: #a855f7"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design & Créa -->
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-pink-50 text-pink-600 rounded-xl flex items-center justify-center mb-6 text-xl shadow-inner">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-4">Design</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1"><span>Canva Pro</span><span>95%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 95%; background: #ec4899"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1"><span>UI/UX Basics</span><span>65%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 65%; background: #ec4899"></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projets Portfolio -->
-    <section id="projets" class="bg-white">
+    <!-- Projets -->
+    <section id="projets">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center italic">Mes Projets Data Science</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Projet Spécifique -->
+                <div class="group bg-slate-900 text-white p-8 rounded-3xl relative overflow-hidden transition-all hover:scale-[1.02]">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 text-8xl transform rotate-12">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Segmentation Client E-Commerce</h3>
+                    <p class="text-slate-400 mb-6">Projet d'analyse BI visant à identifier les segments de clients à haute valeur via Python et Kaggle.</p>
+                    <a href="https://github.com/afaf-oussi" target="_blank" class="inline-flex items-center gap-2 text-blue-400 font-bold group-hover:underline">
+                        Consulter le Repo <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Portfolio -->
+                <div class="group border-2 border-dashed border-slate-200 p-8 rounded-3xl hover:border-blue-400 transition-colors">
+                    <h3 class="text-2xl font-bold mb-4">Digital Identity Portfolio</h3>
+                    <p class="text-slate-600 mb-6">Conception d'une plateforme web statique responsive pour l'hébergement du CV et des certifications.</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-slate-100 text-[10px] font-bold rounded-md">HTML5</span>
+                        <span class="px-3 py-1 bg-slate-100 text-[10px] font-bold rounded-md">TAILWIND</span>
+                        <span class="px-3 py-1 bg-slate-100 text-[10px] font-bold rounded-md">GITHUB PAGES</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-white border-t border-slate-200 py-12">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-12">Projets Portfolio</h2>
-            <div class="grid md:grid-cols-3 gap-8 text-left">
-                <div class="bg-slate-50 p-6 rounded-2xl card-hover border border-slate-100">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fas fa-chart-pie"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Segmentation Client</h3>
-                    <p class="text-slate-600 text-sm mb-4">Analyse RFM pour optimiser le ciblage marketing via Python.</p>
-                    <a href="https://github.com/afaf-oussi/marketing-segmentation-project" target="_blank" class="text-blue-600 text-sm font-semibold hover:underline">Voir le projet →</a>
-                </div>
-                <!-- Autres projets... -->
+            <div class="flex justify-center space-x-6 mb-8 text-2xl text-slate-400">
+                <a href="mailto:oussiafaf@gmail.com" class="hover:text-blue-600"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+212629136679" class="hover:text-blue-600"><i class="fas fa-phone"></i></a>
+                <a href="https://github.com/afaf-oussi" class="hover:text-black"><i class="fab fa-github"></i></a>
             </div>
+            <p class="text-slate-500 text-sm">© 2026 Afaf Oussi • Dossier TP Data Science • M. HALIM</p>
         </div>
-    </section>
+    </footer>
 
-    <!-- Contact -->
-    <section id="contact" class="bg-slate-900 text-white">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-12">Me Contacter</h2>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-16">
-                <a href="mailto:oussiafaf@gmail.com" class="flex items-center gap-3 bg-white/10 px-8 py-4 rounded-2xl hover:bg-white/20 transition group">
-                    <i class="fas fa-envelope text-blue-400 group-hover:scale-110"></i>
-                    <span>oussiafaf@gmail.com</span>
-                </a>
-                <a href="tel:+212629136679" class="flex items-center gap-3 bg-white/10 px-8 py-4 rounded-2xl hover:bg-white/20 transition group">
-                    <i class="fas fa-phone text-blue-400 group-hover:scale-110"></i>
-                    <span>+212 629 136 679</span>
-                </a>
-            </div>
-            <p class="text-slate-500 text-sm mt-10">&copy; 2026 Afaf Oussi. Fait avec passion.</p>
-        </div>
-    </section>
-
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const progressBars = entry.target.querySelectorAll('.skill-progress');
-                    progressBars.forEach(bar => bar.style.width = bar.getAttribute('data-width'));
-                }
-            });
-        }, { threshold: 0.1 });
-        observer.observe(document.querySelector('#competences'));
-
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.onclick = () => menu.classList.toggle('hidden');
-    </script>
 </body>
 </html>
